@@ -37,13 +37,13 @@ The deployment uses Modal's serverless infrastructure to:
 2. Deploy the VSCode server to Modal:
 
    ```bash
-   modal deploy deploy_vscode.py
+   uvx modal deploy deploy_vscode.py
    ```
 
 3. Run the VSCode server:
 
    ```bash
-   modal run deploy_vscode.py::run_vscode_server
+   uvx modal run deploy_vscode.py::run_vscode_server
    ```
 
 4. Follow the authentication instructions that appear in the terminal to connect to your VSCode server.
@@ -59,8 +59,9 @@ The server will time out after 5 minutes of inactivity. Adjust the amount of RAM
 
 - **Container Setup**: The Modal image is configured with:
   - Debian Slim as the base
-  - Git, wget, and other essential tools
+  - Git, wget, curl, and other essential tools
   - Official Microsoft VSCode package
+  - Pixi package manager for Python environment management
 
 ## Usage
 
@@ -69,6 +70,7 @@ Once connected to your VSCode server:
 1. You can install extensions as needed
 2. Clone repositories to the `/root/_repos` directory for persistence
 3. Configure your settings as you would in a local VSCode installation
+4. Use Pixi to manage Python environments for your projects
 
 Your environment will persist between sessions, allowing you to continue your work seamlessly.
 

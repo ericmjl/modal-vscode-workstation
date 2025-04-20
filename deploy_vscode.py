@@ -12,6 +12,9 @@ image = (
     )
     .apt_install("apt-transport-https")
     .apt_install("code")
+    .apt_install("curl")
+    .run_commands("""curl -fsSL https://pixi.sh/install.sh | sh""")
+    .env({"PATH": "/root/.pixi/bin:$PATH"})
 )
 
 dot_vscode_volume = modal.Volume.from_name("vscode-server", create_if_missing=True)
